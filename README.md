@@ -6,7 +6,7 @@
 
 Pour cette première partie, le site se compose de la manière suivante :
 - un dossier apache-php-image contenant :
-    - dossier content contenant un example de site bootstrap
+    - dossier content contenant un example de site bootstrap téléchargé depuis https://startbootstrap.com/theme/one-page-wonder
     - un fichier Dockerfile pour la création du docker
     ``` Dockerfile
     # Dockerfile
@@ -83,3 +83,4 @@ Après avoir lancé le container docker créé, on peut se rendre à l'adresse `
 
 ### Configuration
 
+apache reference : https://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html
