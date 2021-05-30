@@ -2,7 +2,7 @@ $(function () {
     console.log("loading students");
 
     function loadStudents() {
-        $.getJSON( "/api/spells/spell/", function( spells ){
+        $.getJSON( "/api/spells/", function( spells ){
             console.log(spells);
             var message = "No spell in the book";
             if (spells.length > 0){
