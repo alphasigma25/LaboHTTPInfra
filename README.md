@@ -155,6 +155,14 @@ Pour que tout fonctionne correctement, il faut s'assurer que les adresses ip don
 Si les adresses ne sont pas les mêmes, il faut changer manuellement les adresses dans le fichier de configuration pour qu'elles correspondent.
 Il faut aussi s'assurer que les éventuels précédents conteneurs homonymes ait été effacés.
 
+### DNS
+
+Pour pouvoir voir le site depuis un navigateur, il faut faire une configuration DNS et affecter demo.res.ch à l'adresse ip de localhost.
+Pour ce faire, il faut rajouter la ligne suivante dans le fichier hosts : 
+```
+127.0.0.1     demo.res.ch
+```
+
 ### Visualisation
 
-Après avoir lancé le conteneur docker créé, si les adresses ip des docker pour le serveur statique et dynamique correspondent, on peut se rendre à l'adresse `http://localhost:8080` pour voir le résultat.
+Après avoir lancé le conteneur docker créé, si les adresses ip des docker pour le serveur statique et dynamique correspondent, on peut se rendre à l'adresse http://demo.res.ch:8080/ pour voir le résultat.
