@@ -4,7 +4,7 @@ var chance = new Chance();
 var express = require("express");
 var app = express();
 
-app.get('/spell', function (req, res) {
+app.get('/spells', function (req, res) {
     res.send(generateSpells());
 });
 
