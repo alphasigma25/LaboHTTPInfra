@@ -15,8 +15,8 @@ Chaque étape de ce laboratoire a été réalisé sur une branche séparée du g
 
 Pour cette première partie, le site se compose de la manière suivante :
 - un dossier apache-php-image contenant :
-    - dossier content contenant un example de site bootstrap téléchargé depuis https://startbootstrap.com/theme/one-page-wonder
-    - un fichier Dockerfile pour la création du docker
+  - dossier content contenant un example de site bootstrap téléchargé depuis https://startbootstrap.com/theme/one-page-wonder
+  - un fichier Dockerfile pour la création du docker
     ``` Dockerfile
     # Dockerfile
   
@@ -48,14 +48,14 @@ Dans cette deuxième partie, on implémente une API qui renvoie des listes de so
   "effect" : "phrase aléatoire"
 }
 ```
-        
+
 ### Configuration
 
 Pour cette deuxième partie, le site se compose de la manière suivante :
 - un dossier apache-php-image sans changement par rapport à l'étape précédente.
 - un dossier express-image contenant :
-    - dossier src contenant un projet node.js fournissant une API qui renvoie des listes de sorts au format json.
-    - un fichier Dockerfile pour la création du docker
+  - dossier src contenant un projet node.js fournissant une API qui renvoie des listes de sorts au format json.
+  - un fichier Dockerfile pour la création du docker
     ``` Dockerfile
     # Dockerfile
   
@@ -78,7 +78,7 @@ docker run -d -p 9090:3000 --name express_dynamic res/express_spells
 
 ### Visualisation
 
-Après avoir lancé le container docker créé, on peut se rendre à l'adresse `http://localhost:3000/api/spell` pour voir 
+Après avoir lancé le container docker créé, on peut se rendre à l'adresse http://localhost:9090/spells pour voir
 le résultat.
 
 ## Partie 3 - Reverse proxy
@@ -107,7 +107,7 @@ Pour cette troisième partie, le site se compose de la manière suivante :
     # a2ensite pour activer les sites
     RUN a2ensite 000-* 001-*
     ```
-    Il peut également être utile de rajouter la commande suivante pour installer vim et faire des modifications 
+    Il peut également être utile de rajouter la commande suivante pour installer vim et faire des modifications
     manuelles dans les conteneurs Docker lors de phases de tests.
     ```dockerfile 
     RUN apt-get update && \
@@ -155,9 +155,17 @@ Pour que tout fonctionne correctement, il faut s'assurer que les adresses ip don
 Si les adresses ne sont pas les mêmes, il faut changer manuellement les adresses dans le fichier de configuration pour qu'elles correspondent.
 Il faut aussi s'assurer que les éventuels précédents conteneurs homonymes ait été effacés.
 
+### DNS
+
+Pour pouvoir voir le site depuis un navigateur, il faut faire une configuration DNS et affecter demo.res.ch à l'adresse ip de localhost.
+Pour ce faire, il faut rajouter la ligne suivante dans le fichier hosts :
+```
+127.0.0.1     demo.res.ch
+```
+
 ### Visualisation
 
-Après avoir lancé le conteneur docker créé, si les adresses ip des docker pour le serveur statique et dynamique correspondent, on peut se rendre à l'adresse `http://localhost:8080` pour voir le résultat.
+Après avoir lancé le conteneur docker créé, si les adresses ip des docker pour le serveur statique et dynamique correspondent, on peut se rendre à l'adresse http://demo.res.ch:8080/ pour voir le résultat.
 
 ## Partie 4 - Requetes ajax avec JQuery
 
@@ -203,7 +211,7 @@ Pour lancer l'infrastructure, on utilise les même commandes qu'à l'étape pré
 
 ### Visualisation
 
-Après avoir lancé le conteneur docker créé, si les adresses ip des dockers pour le serveur statique et dynamique correspondent, on peut se rendre à l'adresse `http://localhost:8080` pour voir le résultat.
+Après avoir lancé le conteneur docker créé, si les adresses ip des dockers pour le serveur statique et dynamique correspondent, on peut se rendre à l'adresse http://demo.res.ch:8080/ pour voir le résultat.
 Si tout s'est bien passé, le site affiche toutes les deux secondes un nouveau sort.
 
 ## Partie 5 - Configuration dynamique reverse proxy
@@ -224,8 +232,8 @@ Dans cette étape, on modifie Dockerfile et on rajoute des fichiers suivants dan
   RUN a2enmod proxy proxy_http
   RUN a2ensite 000-* 001-*
   ```
-- `apache2-foreground` : il faut aller chercher la bonne version de ce fichier dans le repository github correspondant 
-  au projet qui a permis la création de l'image docker que nous utilisons. Dans le cas présent, la référence 
+- `apache2-foreground` : il faut aller chercher la bonne version de ce fichier dans le repository github correspondant
+  au projet qui a permis la création de l'image docker que nous utilisons. Dans le cas présent, la référence
   suivante a été utilisée : https://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html
   Le fichier a ensuite été complété en rajoutant les commandes suivantes après la commande `set -e` :
   ```
@@ -255,7 +263,7 @@ Dans cette étape, on modifie Dockerfile et on rajoute des fichiers suivants dan
 
 ### Docker
 
-Pour construire les images Dockers, on utilise les mêmes commandes que lors des étapes précédentes, et on rajoute 
+Pour construire les images Dockers, on utilise les mêmes commandes que lors des étapes précédentes, et on rajoute
 les flag -e pour donner les adresses IP des docker des sites statique et dynamique
 ```bash
 docker run -d --name apache_static res/apache_php
@@ -265,8 +273,7 @@ docker run -d --name apache_rp -e STATIC_APP1=172.17.0.2:80 -e -e DYNAMIC_APP1=1
 
 ### Visualisation
 
-Après avoir lancé le conteneur docker créé, si les adresses ip des dockers pour le serveur statique et dynamique correspondent, on peut se rendre à l'adresse `http://localhost:8080` pour voir le résultat.
-
+Après avoir lancé le conteneur docker créé, si les adresses ip des dockers pour le serveur statique et dynamique correspondent, on peut se rendre à l'adresse http://demo.res.ch:8080/ pour voir le résultat.
 ## Bonus 1 - Load balancing
 
 Pour cette étape, on utilise le module apache pour le load balancing : https://httpd.apache.org/docs/2.4/mod/mod_proxy_balancer.html
@@ -344,4 +351,4 @@ Pour que tout marche, il faut s'assurer, comme pour les étapes précédentes qu
 
 ### Visualisation
 
-Après avoir lancé le conteneur docker créé, si les adresses ip des dockers pour le serveur statique et dynamique correspondent, on peut se rendre à l'adresse `http://localhost:8080` pour voir le résultat.
+Après avoir lancé le conteneur docker créé, si les adresses ip des dockers pour le serveur statique et dynamique correspondent, on peut se rendre à l'adresse http://demo.res.ch:8080/ pour voir le résultat.
