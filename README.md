@@ -78,5 +78,4 @@ docker run -d -p 9090:3000 --name express_dynamic res/express_spells
 
 ### Visualisation
 
-Après avoir lancé le container docker créé, on peut se rendre à l'adresse `http://localhost:3000/api/spell` pour voir
-le résultat.
+Après avoir lancé le container docker créé, on peut se rendre à l'adresse http://localhost:9090/spells pour voir le résultat.
