@@ -3,12 +3,12 @@
 
 Chaque étape de ce laboratoire a été réalisé sur une branche séparée du git.
 
-Partie 1 : https://github.com/soso24soso/LaboHTTPInfra/tree/fb-apache-static
-Partie 2 : https://github.com/soso24soso/LaboHTTPInfra/tree/fb-express-dynamic
-Partie 3 : https://github.com/soso24soso/LaboHTTPInfra/tree/fb-apache-reverse-proxy
-Partie 4 : https://github.com/soso24soso/LaboHTTPInfra/tree/fb-ajax-jquery
-Partie 5 : https://github.com/soso24soso/LaboHTTPInfra/tree/fb-dynamic-configuration
-Bonus 1  : https://github.com/soso24soso/LaboHTTPInfra/tree/fb-load-balancing-1
+- Partie 1 : https://github.com/soso24soso/LaboHTTPInfra/tree/fb-apache-static
+- Partie 2 : https://github.com/soso24soso/LaboHTTPInfra/tree/fb-express-dynamic
+- Partie 3 : https://github.com/soso24soso/LaboHTTPInfra/tree/fb-apache-reverse-proxy
+- Partie 4 : https://github.com/soso24soso/LaboHTTPInfra/tree/fb-ajax-jquery
+- Partie 5 : https://github.com/soso24soso/LaboHTTPInfra/tree/fb-dynamic-configuration
+- Bonus 1  : https://github.com/soso24soso/LaboHTTPInfra/tree/fb-load-balancing-1
 
 ## Partie 1 - Serveur statique HTTP
 ### Configuration
